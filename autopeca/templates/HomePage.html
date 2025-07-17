@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Peças - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{% static 'imagens/favicon-16x16.png' %}">
+    <link rel="stylesheet" href="{% static '../css/home.css' %}">
+</head>
+
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col">
+
+
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="bg-red-800 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <img src="{%static 'imagens/home.png' %}" alt="" class="w-36 rounded-xl shadow-lg">
+                <ul class="flex gap-4">
+                    <li><a href="#" class="hover:underline">Início</a></li>
+                    <li><a href="#" class="hover:underline">Peças</a></li>
+                    <li><a href="#" class="hover:underline">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <section class="bg-gray-100 py-16 text-center">
+                <h2 class="text-4xl font-bold text-gray-800">Bem-vindo à melhor loja de peças automotivas</h2>
+                <p class="mt-4 text-gray-600">Encontre tudo o que você precisa para o seu carro.</p>
+                <a href="#"
+                    class="mt-6 inline-block bg-red-800 text-white px-6 py-3 rounded hover:bg-red-600 transition">Ver
+                    Catálogo</a>
+            </section>
+
+            <section class="container mx-auto py-10">
+                <div class="grid md:grid-cols-3 gap-6">
+                    {% for peca in pecas %}
+                    <!-- Card da peça -->
+                    <div class="bg-white shadow-md rounded p-4 flex flex-col justify-between">
+                        {% if peca.imagem %}
+                        <img src="{{ peca.imagem.url }}" alt="{{ peca.nome }}"
+                            class="w-full h-48 object-cover rounded-md shadow-sm border border-gray-200 mb-4">
+                        {% endif %}
+                        <h4 class="text-lg font-bold mb-2">{{ peca.nome }}</h4>
+                        <p class="text-gray-600">{{ peca.descricao }}</p>
+                        <p class="text-gray-800 font-semibold mt-2">R$ {{ peca.preco }}</p>
+                        <button class="mt-4 bg-red-800 text-white px-4 py-2 rounded hover:bg-red-600">Comprar</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+
+        <!-- Rodapé -->
+
+    </div>
+
+</body>
+
+</html>
