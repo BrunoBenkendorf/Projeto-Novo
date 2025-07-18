@@ -8,7 +8,7 @@
     <title>Auto Peças - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="{% static 'imagens/favicon-16x16.png' %}">
-    <link rel="stylesheet" href="{% static '../css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
 </head>
 
 <body class="bg-gray-100 font-sans min-h-screen flex flex-col">
@@ -23,6 +23,7 @@
                     <li><a href="#" class="hover:underline">Início</a></li>
                     <li><a href="#" class="hover:underline">Peças</a></li>
                     <li><a href="#" class="hover:underline">Contato</a></li>
+                    <li>Não tem conta? <a href="{% url 'cadastro_cliente' %}">Cadastre-se</a></li>
                 </ul>
             </div>
         </nav>
